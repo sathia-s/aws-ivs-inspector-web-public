@@ -10,7 +10,8 @@ export default defineComponent({
 
   setup() {
     onMounted(() => {
-      console.log("env var:", process.env);
+      console.log("env var VITE_REST_API:", import.meta.env.VITE_REST_API);
+      console.log("env var:", import.meta.env);
     });
   },
 });
