@@ -13,7 +13,7 @@ export const useCommonStore = defineStore("CommonStore", {
         wss_get_live_streams: "qn41fg6hkf",
         wss_get_session_events: "a1jwgj91d6",
       },
-      "ap-south-1": import.meta.env.VITE_AP_SOUTH_1_APIS,
+      "ap-south-1": JSON.parse(import.meta.env.VITE_AP_SOUTH_1_APIS),
       // {
       //   rest: "79gng5lgg3",
       //   wss_get_live_streams: "qb8941ky4h",
