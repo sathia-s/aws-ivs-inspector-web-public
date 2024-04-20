@@ -19,7 +19,7 @@ export const useChannelStore = defineStore("ChannelStore", {
       try {
         console.log("getting channel list", ivsRegion);
         const response = await api.get(
-          `https://${commonStore.apiIds[ivsRegion].rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/list-channels`,
+          `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/list-channels`,
           {
             params: {
               nextToken: this.channelsNextToken[ivsRegion] || "",
@@ -56,7 +56,7 @@ export const useChannelStore = defineStore("ChannelStore", {
 
       try {
         const response = await api.get(
-          `https://${commonStore.apiIds[ivsRegion].rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-channel`,
+          `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-channel`,
           {
             params: {
               channelArn: channelArn,
@@ -101,10 +101,10 @@ export const useChannelStore = defineStore("ChannelStore", {
 
     async listStreamSessions(channelArn, channelId, ivsRegion) {
       console.log("getting stream sessions:", channelArn, channelId, ivsRegion);
-      console.log(commonStore.apiIds[ivsRegion].rest);
+      console.log(commonStore.apiIds.rest);
       try {
         const response = await api.get(
-          `https://${commonStore.apiIds[ivsRegion].rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/list-stream-sessions`,
+          `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/list-stream-sessions`,
           {
             params: {
               channelArn: channelArn,

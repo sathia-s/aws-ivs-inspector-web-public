@@ -2,25 +2,13 @@ import { defineStore } from "pinia";
 
 export const useCommonStore = defineStore("CommonStore", {
   state: () => ({
-    apiIds: {
-      "us-east-1": {
-        rest: "yty8agkf1h",
-        wss_get_live_streams: "i435mvmz60",
-        wss_get_session_events: "6rlwky8rza",
-      },
-      "us-west-2": {
-        rest: "t0drqkcmi6",
-        wss_get_live_streams: "qn41fg6hkf",
-        wss_get_session_events: "a1jwgj91d6",
-      },
-      "ap-south-1": import.meta.env.VITE_AP_SOUTH_1_API_IDS
-        ? JSON.parse(import.meta.env.VITE_AP_SOUTH_1_API_IDS)
-        : {
-            rest: "79gng5lgg3",
-            wss_get_live_streams: "qb8941ky4h",
-            wss_get_session_events: "m5vtb6pt78",
-          },
-    },
+    apiIds: JSON.parse(import.meta.env.VITE_API_IDS),
+
+    // {
+    //   "us-east-1": JSON.parse(import.meta.env.VITE_US_EAST_1_API_IDS),
+    //   "us-west-2": JSON.parse(import.meta.env.VITE_US_WEST_2_API_IDS),
+    //   "ap-south-1": JSON.parse(import.meta.env.VITE_AP_SOUTH_1_API_IDS),
+    // },
 
     thumbStyle: {
       right: "0px",

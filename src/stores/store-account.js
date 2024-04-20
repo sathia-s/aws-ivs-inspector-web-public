@@ -16,7 +16,7 @@ export const useAccountStore = defineStore("AccountStore", {
       try {
         console.log(serviceCode, ivsRegion);
         const response = await api.get(
-          `https://${commonStore.apiIds[ivsRegion].rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-quotas`,
+          `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-quotas`,
           {
             params: {
               serviceCode: serviceCode,
