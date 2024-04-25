@@ -22,7 +22,7 @@ export const useSessionStore = defineStore("SessionStore", {
       console.log("getting live streams", ivsRegion);
       try {
         const response = await api.get(
-          `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/list-streams`,
+          `https://${commonStore.envVars.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/list-streams`,
           {
             params: {
               nextToken: this.streamsNextToken[ivsRegion] || "",
@@ -70,7 +70,7 @@ export const useSessionStore = defineStore("SessionStore", {
       try {
         console.log(streamId, channelArn);
         const response = await api.get(
-          `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-session`,
+          `https://${commonStore.envVars.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-session`,
           {
             params: {
               stream_id: streamId,
@@ -105,7 +105,7 @@ export const useSessionStore = defineStore("SessionStore", {
       try {
         console.log(channelArn, streamId);
         const response = await api.get(
-          `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-stream`,
+          `https://${commonStore.envVars.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-stream`,
           {
             params: {
               channelArn: channelArn,
@@ -141,7 +141,7 @@ export const useSessionStore = defineStore("SessionStore", {
       try {
         console.log(streamId, channelId);
         const response = await api.get(
-          `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-ingest-metrics`,
+          `https://${commonStore.envVars.rest}.execute-api.${ivsRegion}.amazonaws.com/ivs/get-ingest-metrics`,
           {
             params: {
               stream_id: streamId,
@@ -174,7 +174,7 @@ export const useSessionStore = defineStore("SessionStore", {
     async getSessionEvents(streamId, channelArn, ivsRegion) {
       try {
         const ws = new WebSocket(
-          `wss://${commonStore.apiIds.wss_get_session_events}.execute-api.${ivsRegion}.amazonaws.com/ivs`
+          `wss://${commonStore.envVars.wss_get_session_events}.execute-api.${ivsRegion}.amazonaws.com/ivs`
         );
         ws.onopen = () => {
           console.log("open response:", ws);
@@ -218,7 +218,7 @@ export const useSessionStore = defineStore("SessionStore", {
     async getLiveStreams(ivsRegion) {
       try {
         const ws = new WebSocket(
-          `wss://${commonStore.apiIds.wss_get_live_streams}.execute-api.${ivsRegion}.amazonaws.com/ivs`
+          `wss://${commonStore.envVars.wss_get_live_streams}.execute-api.${ivsRegion}.amazonaws.com/ivs`
         );
         ws.onopen = () => {
           console.log("open response:", ws);
@@ -288,7 +288,7 @@ export const useSessionStore = defineStore("SessionStore", {
         console.log(serviceCode);
         api
           .get(
-            `https://${commonStore.apiIds.rest}.execute-api.${ivsRegion}.amazonaws.com/ivsQuotaProvisioned`,
+            `https://${commonStore.envVars.rest}.execute-api.${ivsRegion}.amazonaws.com/ivsQuotaProvisioned`,
             {
               params: {
                 serviceCode: serviceCode,

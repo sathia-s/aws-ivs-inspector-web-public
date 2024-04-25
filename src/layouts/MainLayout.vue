@@ -99,6 +99,7 @@ import { computed, defineComponent, ref } from "vue";
 import Navigation from "src/components/HomeComponents/Navigation.vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAccountStore } from "src/stores/store-account";
+import { useCommonStore } from "src/stores/store-common";
 
 export default defineComponent({
   name: "MainLayout",
@@ -109,6 +110,7 @@ export default defineComponent({
 
   setup() {
     const accountStore = useAccountStore();
+    const commonStore = useCommonStore();
     const navigationList = computed(() => [
       {
         title: "Dashboard",
@@ -134,7 +136,7 @@ export default defineComponent({
     const $router = useRouter();
     const drawer = ref(false);
 
-    const accountId = JSON.parse(import.meta.env.VITE_API_IDS).account_id;
+    const accountId = commonStore.envVars.account_id;
     const region = ref($route.params.region);
     const channelId = ref(null);
 
@@ -146,13 +148,6 @@ export default defineComponent({
       { label: "AP South 1", value: "ap-south-1" },
       { label: "AP NorthEast 1", value: "ap-northeast-1" },
       { label: "AP NorthEast 2", value: "ap-northeast-2" },
-      // { label: "US East 1 (N. Virginia)", value: "us-east-1" },
-      // { label: "US West 2 (Oregon)", value: "us-west-2" },
-      // { label: "Asia Pacific 1 (Mumbai)", value: "ap-south-1" },
-      // { label: "Asia Pacific 2 (Seoul)", value: "ap-northeast-2" },
-      // { label: "Asia Pacific 1 (Tokyo)", value: "ap-northeast-1" },
-      // { label: "Europe (Frankfurt 1)", value: "eu-central-1" },
-      // { label: "Europe (Ireland 1)", value: "eu-west-1" },
     ];
 
     const goToChannel = () => {

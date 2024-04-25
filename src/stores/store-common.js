@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useCommonStore = defineStore("CommonStore", {
   state: () => ({
-    apiIds: JSON.parse(import.meta.env.VITE_API_IDS),
+    envVars: JSON.parse(import.meta.env.VITE_ENV_VARS),
 
     thumbStyle: {
       right: "0px",
