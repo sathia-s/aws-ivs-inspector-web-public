@@ -134,7 +134,7 @@ export default defineComponent({
     const $router = useRouter();
     const drawer = ref(false);
 
-    const accountId = ref("740024244647");
+    const accountId = JSON.parse(import.meta.env.VITE_API_IDS).account_id;
     const region = ref($route.params.region);
     const channelId = ref(null);
 
