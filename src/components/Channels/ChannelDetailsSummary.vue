@@ -259,9 +259,8 @@ export default defineComponent({
     );
 
     onMounted(() => {
-      console.log("channelDetails in store", channelStore.channels);
-      console.log(channelId, channelDetails.value);
-      if (!channelDetails.value?.["playbackUrl"]) {
+      console.log("channelDetails in store", channelDetails.value);
+      if (!channelDetails.value?.channelConfig?.playbackUrl) {
         loading.value = true;
         channelStore
           .getChannel(channelArn, channelId, awsRegion)
@@ -288,8 +287,6 @@ export default defineComponent({
       searchSession: ref(""),
     };
   },
-
-  // components: { ListItems },
 });
 </script>
 
