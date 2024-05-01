@@ -23,7 +23,7 @@
               v-model="accountId"
               filled
               square
-              label="Channel ID"
+              label="Account ID"
             >
             </q-input>
 
